@@ -1,0 +1,412 @@
+CREATE TABLE BRAND
+(
+ brandID	        VARCHAR(10),
+ brandName	        VARCHAR(20),
+
+ CONSTRAINT pk_brand_brandID PRIMARY KEY(brandID)
+);
+
+INSERT INTO BRAND (brandID, brandName)
+VALUES ('ap', 'Apple');
+
+INSERT INTO BRAND (brandID, brandName)
+VALUES ('bb', 'BlackBerry');
+
+INSERT INTO BRAND (brandID, brandName)
+VALUES ('htc', 'HTC');
+
+INSERT INTO BRAND (brandID, brandName)
+VALUES ('ss', 'Samsung');
+
+INSERT INTO BRAND (brandID, brandName)
+VALUES ('lg', 'LG');
+
+CREATE TABLE COMPANY
+(
+ compID	        	VARCHAR(1),
+ compName	        VARCHAR(20),
+
+ CONSTRAINT pk_company_compID PRIMARY KEY(compID)
+);
+
+INSERT INTO COMPANY (compID, compName)
+VALUES ('1', 'Bell');
+
+INSERT INTO COMPANY (compID, compName)
+VALUES ('2', 'Tellus');
+
+INSERT INTO COMPANY (compID, compName)
+VALUES ('3', 'Rogers');
+
+INSERT INTO COMPANY (compID, compName)
+VALUES ('4', 'Koodo');
+
+INSERT INTO COMPANY (compID, compName)
+VALUES ('5', 'Virgin Mobile');
+
+INSERT INTO COMPANY (compID, compName)
+VALUES ('6', 'Wind');
+
+CREATE TABLE DATA
+(
+ dataID	        	CHAR(6),
+ dataLimit	        CHAR(10),
+ dataCost	        CHAR(12),
+ compID 			VARCHAR(1),
+
+ CONSTRAINT pk_data_dataID PRIMARY KEY(dataID),
+ CONSTRAINT	fk_company_compID FOREIGN KEY(compID) REFERENCES Company(compID)
+);
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('bel500','500mb','20.00', '1');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('bel1','1gb','35.00', '1');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('bel5','5gb','50.00', '1');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('tel1','1gb','25.00', '2');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('tel2','unlimited','00.25/mb', '2');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('tel3','2.5gb','35.00', '2');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('ro300','300mb','Included', '3');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('ro500','500mb','Included', '3');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('ro1','1gb','Included', '3');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('ko100','100mb','Included', '4');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('ko55','1gb','Included', '4');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('ko90','5gb','Included', '4');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('vi100','100mb','Included', '5');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('vi1','1gb','Included', '5');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('vi5','5gb','Included', '5');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('win2','2gb','Included', '6');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('win5','5gb','Included', '6');
+
+INSERT INTO DATA (dataID, dataLimit, dataCost, compID)
+VALUES ('win10','10gb','Included', '6');
+
+
+CREATE TABLE PHONE
+(
+ phoneID	        VARCHAR(10),
+ modelPH	        VARCHAR(20),
+ sizePH		        VARCHAR(20),
+ costPH				Decimal(5,2),
+ brandID			VARCHAR(10) NOT NULL,
+
+ CONSTRAINT pk_phone_phoneID PRIMARY KEY(phoneID),
+ CONSTRAINT fk_brand_phone FOREIGN KEY(brandID) REFERENCES Brand(brandID)
+);
+
+
+/*Apple*/
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH, costPH, brandID)
+VALUES ('ap5S','iPhone 5s','16gb', 128.95, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6v1','iPhone 6','16gb', 269.00, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6v2','iPhone 6','64gb', 398.95, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6v3','iPhone 6','128gb', 398.95, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6Sv1','iPhone 6s','16gb', 398.99, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6Sv2','iPhone 6s','64gb', 529.00, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6Sv3','iPhone 6S','128gb', 659.00, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6+v1','iPhone 6+','16gb', 399.00, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6+v2','iPhone 6+','64gb', 528.00, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6+v3','iPhone 6+','128gb', 528.95, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6S+v1','iPhone 6S+','16gb', 529.00, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6S+v2','iPhone 6S+','64gb', 685.99, 'ap');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ap6S+v3','iPhone 6S+','128gb', 788.99, 'ap');
+
+/*Samsung*/
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ssGEs6+','Galaxy Edge S6 +','32gb', 360.00, 'ss');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ssGS6Ev1','Galaxy S6 Edge','32gb', 350.00, 'ss');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ssGS6Ev2','Galaxy S6 Edge','64gb', 459.99, 'ss');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ssGS6Ev3','Galaxy S6 Edge','128gb', 559.99, 'ss');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ssGS6v1','Galaxy S6','32gb', 150.00, 'ss');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ssGS6v2','Galaxy S6','64gb', 360.00, 'ss');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ssGS6v3','Galaxy S6','128gb', 320.00, 'ss');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ssGA5v1','Galaxy A5','16gb Internal', 00.00, 'ss');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('ssGGP','Galaxy Grand Prime','8gb Internal', 00.00, 'ss');
+
+/*BlackBerry*/
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('bbPRIV','PRIV','Exteranl Memory Card', 150.00, 'bb');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('bbPP','Passport','32gb', 150.00, 'bb');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('bbClass','Classic','16gb', 50.00, 'bb');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('bbLP','Leap','16gb', 00.00, 'bb');
+
+/*HTC*/
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('HTCM9','M9','32gb', 00.00, 'htc');
+
+/*LG*/
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('lgG5','G5','32gb', 149.99, 'lg');
+
+INSERT INTO PHONE (phoneID, modelPH, sizePH,  costPH, brandID)
+VALUES ('lgG3','G3','16gb', 00.00, 'lg');
+
+
+
+
+CREATE TABLE PLAN
+(planID		        CHAR(10),
+ planCost	        Decimal(5,2),
+ talkID	       		VARCHAR(10)		NOT NULL,
+ textID	        	VARCHAR(10)		NOT NULL,
+ termID				CHAR(1),
+ dataID				CHAR(6)			NOT NULL,		
+ compID	        	VARCHAR(1)		NOT NULL,
+
+ CONSTRAINT pk_plan_planID PRIMARY KEY(planID),
+ CONSTRAINT fk_company_plan FOREIGN KEY(compID) REFERENCES Company(compID),
+ CONSTRAINT fk_Text_plan FOREIGN KEY(textID) REFERENCES TEXTING(textID),
+ CONSTRAINT fk_talk_plan FOREIGN KEY(talkID) REFERENCES TALK(talkID),
+ CONSTRAINT fk_term_plan FOREIGN KEY(termID) REFERENCES TERM(termID),
+ CONSTRAINT fk_data_plan FOREIGN KEY(dataID) REFERENCES DATA(dataID)
+);
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('bep50','1',50.00,'text1', '1', 'bel500', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('bep55','2',55.00,'text1', '1', 'bel1', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('bep60','2',60.00,'text1', '1', 'bel5', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('tev35','3',35.00,'text2', '2', 'tel1', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('tev50','4',50.00,'text2', '2', 'tel2', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('tev60','5',60.00,'text2', '2', 'tel3', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('rog50','6',50.00,'text3', '3', 'ro300', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('rog60','7',60.00,'text3', '3', 'ro500', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('rog70','8',70.00,'text3', '3', 'ro1', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('koo30','9',30.00,'text4', '4', 'ko100', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('koo55','10',55.00,'text4', '4', 'ko55', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('koo90','10',90.00,'text4', '4', 'ko90', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('silver','11',47.00,'text5', '5', 'vi100', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('gold','13',70.00,'text5', '5', 'vi1', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('platinum','12',100.00,'text5', '5', 'vi5', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('win35','14',35.00,'text6', '6', 'win2', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('win40','14',40.00,'text6', '6', 'win5', '1');
+
+INSERT INTO PLAN (planID, talkID, planCost, textID, compID, dataID, termID)
+VALUES ('win50','14',50.00,'text6', '6', 'win10', '1');
+
+
+CREATE TABLE TALK
+(
+ talkID		        VARCHAR(10),
+ talkAmount			VARCHAR(30),
+ compID				VARCHAR(1),
+
+ CONSTRAINT pk_talk_talkID PRIMARY KEY(talkID),
+ CONSTRAINT fk_company_talk FOREIGN KEY(compID) REFERENCES Company(compID)
+
+);
+
+/*Bell Talk Rates*/
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('1','300 Local Minuets', '1');
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('2','Unlimited Nationwide Minuets', '1');
+
+/*Tellus Talk Rates*/
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('3','150 Local Minuets', '2');
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('4','500 Local Minuets', '2');
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('5','Unlimited Nationwide Minuets', '2');
+
+/*Rogers Talk Rates*/
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('6','200 Local Minuets', '3');
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('7','500 Local Minuets', '3');
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('8','1000 Local Minuets', '3');
+
+
+/*Koodo Talk Rates*/
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('9','200 Local Minuets', '4');
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('10','Unlimited Nationwide Minuets', '4');
+
+
+/*Virgin Talk Rates*/
+
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('11','300 Local Minuets', '5');
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('12','500 Local Minuets', '5');
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('13','Unlimited Nationwide Minuets', '5');
+
+
+/*Wind Talk Rates*/
+
+INSERT INTO TALK (talkID, talkAmount, compID)
+VALUES ('14','Unlimited Nationwide Minuets', '6');
+
+
+CREATE TABLE TERM
+(
+ termID		        CHAR(1),
+ termLength			VARCHAR(10),
+
+ CONSTRAINT pk_term_termID PRIMARY KEY(termID)
+
+);
+
+INSERT INTO TERM (termID, termLength)
+VALUES ('1', '2 Years');
+
+
+CREATE TABLE TEXTING
+(
+ textID		        VARCHAR(10),
+ textAmount			Varchar(10),
+ compID				VARCHAR(1),
+
+ CONSTRAINT pk_Text_textID PRIMARY KEY(textID),
+ CONSTRAINT fk_company_text FOREIGN KEY(compID) REFERENCES Company(compID)
+
+
+);
+
+INSERT INTO TEXTING (textID, textAmount, compID)
+VALUES ('text1', 'unlimited', '1');
+
+INSERT INTO TEXTING (textID, textAmount, compID)
+VALUES ('text2', 'unlimited', '2');
+
+INSERT INTO TEXTING (textID, textAmount, compID)
+VALUES ('text3', 'unlimited', '3');
+
+INSERT INTO TEXTING (textID, textAmount, compID)
+VALUES ('text4', 'unlimited', '4');
+
+INSERT INTO TEXTING (textID, textAmount, compID)
+VALUES ('text5', 'unlimited', '5');
+
+INSERT INTO TEXTING (textID, textAmount, compID)
+VALUES ('text6', 'unlimited', '6');
